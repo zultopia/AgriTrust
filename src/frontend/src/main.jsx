@@ -5,7 +5,9 @@ import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import { Bounce, Slide, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import NFTPage from "./pages/nft/nft-page";
+import CommunityPage from "./pages/community/community-page";
+import Dashboard from "./pages/dashboard/dashboard-page";
 import { BrowserRouter, Route, Routes, useLocation, useNavigationType } from "react-router";
 import HomePage from "./pages/home-page.jsx";
 import HomeLayout from "@/core/components/layouts/home-layout.jsx";
@@ -70,7 +72,9 @@ createRoot(document.getElementById("root")).render(
         <Routes>
           <Route path="/" element={<HomeLayout />}>
             <Route index element={<HomePage />} />
-      
+            <Route path="/nfts" element={<NFTPage />} />
+            <Route path="/community" element={<CommunityPage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

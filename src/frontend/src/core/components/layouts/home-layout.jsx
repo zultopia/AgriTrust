@@ -9,7 +9,7 @@ import { Menu, Leaf, Wallet, User, X, ChevronDown, Zap, Droplets, Recycle, TreeP
 
 
 export default function HomeLayout() {
-  const navigate = (path) => console.log('Navigate to:', path);
+  const navigate = useNavigate();
   const { isAuthenticated, isLoading, login, user, logout } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
@@ -22,9 +22,8 @@ export default function HomeLayout() {
 
   return (
     <div className={`min-h-screen flex flex-col ${isAssistantPage ? "bg-black" : ""}`}>
-      {isHomePage && (
+      {(
         <>
-          {/* Main Navigation */}
           <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
             <div className="bg-white/10 backdrop-blur-md rounded-full px-8 py-3 border border-white/20">
               <div className="hidden md:flex items-center space-x-8 text-xl font-medium">
@@ -36,7 +35,7 @@ export default function HomeLayout() {
                   Home
                 </a>
                 <a 
-                  href="#" 
+                  href="" 
                   onClick={() => navigate("/dashboard")}
                   className="text-white/70 hover:text-white transition-colors"
                 >
@@ -50,15 +49,13 @@ export default function HomeLayout() {
                   AIScan
                 </a>
                 <a 
-                  href="#" 
                   onClick={() => navigate("/nfts")}
                   className="text-white/70 hover:text-white transition-colors"
                 >
                   NFTs
                 </a>
                 <a 
-                  href="#" 
-                  onClick={() => navigate("/communit")}
+                  onClick={() => navigate("/community")}
                   className="text-white/70 hover:text-white transition-colors flex items-center gap-1"
                 >
                   Community
@@ -109,71 +106,7 @@ export default function HomeLayout() {
         </>
       )}
 
-      {/* Regular Header for Other Pages */}
-      {!isHomePage && (
-        <header className={`border-b border-white/10 sticky top-0 right-0 left-0 bg-black/40 backdrop-blur-3xl z-50`}>
-          <div className="container flex items-center h-16 justify-between">
-            <div className="flex items-center gap-8">
-              <a onClick={() => navigate("/")} className="flex items-center gap-2 font-bold text-xl cursor-pointer">
-                <Leaf className="h-6 w-6" />
-                AgriTrust
-              </a>
-              <nav className="hidden md:flex items-center gap-6">
-                <a href="javascript:void(0)" onClick={() => navigate("/projects")} className="text-sm text-white/90 font-medium flex items-center justify-center">
-                  Projects
-                </a>
-                <a href="javascript:void(0)" onClick={() => navigate("/resources")} className="text-sm text-white/90 font-medium flex items-center justify-center">
-                  Resources
-                </a>
-                <a href="javascript:void(0)" onClick={() => navigate("/nfts")} className="text-sm text-white/90 font-medium flex items-center justify-center">
-                  NFTs
-                </a>
-                <a href="javascript:void(0)" onClick={() => navigate("/assistant")} className="text-sm font-medium flex items-center justify-center gap-1">
-                  <Sparkles className="h-4 w-4 text-emerald-400 mr-1" />
-                  Assistant
-                </a>
-              </nav>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <Button
-                className="hidden md:flex bg-transparent hover:bg-black/30 hover:backdrop-blur-lg"
-                onClick={() => {
-                  if (!isAuthenticated) {
-                    return;
-                  }
-
-                  if (user.role === "community") {
-                    navigate("/community?tab=balance");
-                  } else {
-                    navigate("/balance");
-                  }
-                }}>
-                <span className="text-sm font-medium h-5">{isAuthenticated ? convertE8sToToken(user?.balance) : 0} LUM</span>
-              </Button>
-              {isLoading ? (
-                <div className="h-8 w-8 animate-spin rounded-full border-2 border-emerald-500 border-t-transparent" />
-              ) : isAuthenticated ? (
-                <div className="hidden md:block">
-                  <UserProfileHeader />
-                </div>
-              ) : (
-                <Button className="hidden md:flex bg-black/20 hover:bg-black/30 hover:backdrop-blur-lg" onClick={() => login()}>
-                  <User className="h-5 w-5 mr-2" />
-                  Sign In
-                </Button>
-              )}
-              <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-                <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon" className="md:hidden relative z-50" onClick={handleMobileMenuToggle}>
-                    <Menu className="h-5 w-5" />
-                  </Button>
-                </SheetTrigger>
-              </Sheet>
-            </div>
-          </div>
-        </header>
-      )}
+    
 
       {/* Mobile Menu Sheet */}
       <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
