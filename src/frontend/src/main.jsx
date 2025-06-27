@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import NFTPage from "./pages/nft/nft-page";
 import CommunityPage from "./pages/community/community-page";
 import Dashboard from "./pages/dashboard/dashboard-page";
+import AIScanPage from "./pages/aiscan/aiscanpage";
 import { BrowserRouter, Route, Routes, useLocation, useNavigationType } from "react-router";
 import HomePage from "./pages/home-page.jsx";
 import HomeLayout from "@/core/components/layouts/home-layout.jsx";
@@ -74,6 +75,7 @@ createRoot(document.getElementById("root")).render(
             <Route index element={<HomePage />} />
             <Route path="/nfts" element={<NFTPage />} />
             <Route path="/community" element={<CommunityPage />} />
+            <Route path="/aiscan" element={<AIScanPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>

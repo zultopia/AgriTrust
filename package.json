@@ -16,6 +16,8 @@
     "src/frontend"
   ],
   "dependencies": {
+    "jspdf": "^3.0.1",
+    "jspdf-autotable": "^5.0.2",
     "wasm-opt": "^1.4.0"
   }
 }

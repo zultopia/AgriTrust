@@ -42,8 +42,7 @@ export default function HomeLayout() {
                   Dashboard
                 </a>
                 <a 
-                  href="#" 
-                  onClick={() => navigate("/scan")}
+                  onClick={() => navigate("/aiscan")}
                   className="text-white/70 hover:text-white transition-colors"
                 >
                   AIScan
