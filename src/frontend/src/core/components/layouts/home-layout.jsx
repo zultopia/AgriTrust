@@ -24,9 +24,9 @@ export default function HomeLayout() {
     <div className={`min-h-screen flex flex-col ${isAssistantPage ? "bg-black" : ""}`}>
       {(
         <>
-          <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
+          <nav className="hidden md:flex fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
             <div className="bg-white/10 backdrop-blur-md rounded-full px-8 py-3 border border-white/20">
-              <div className="hidden md:flex items-center space-x-8 text-xl font-medium">
+              <div className="flex items-center space-x-8 text-xl font-medium">
                 <a 
                   href="#" 
                   onClick={() => navigate("/")}
@@ -60,20 +60,24 @@ export default function HomeLayout() {
                   Community
                 </a>
               </div>
-              
-              {/* Mobile menu button for floating nav */}
-              <div className="md:hidden">
-                <Button 
-                  variant="ghost" 
-                  size="icon" 
-                  className="text-white hover:bg-white/20"
-                  onClick={handleMobileMenuToggle}
-                >
-                  <Menu className="h-5 w-5" />
-                </Button>
-              </div>
             </div>
           </nav>
+          <div className="md:hidden fixed top-6 right-6 z-50">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="text-white hover:bg-white/20"
+              onClick={handleMobileMenuToggle}
+            >
+              <Menu className="h-5 w-5" />
+            </Button>
+          </div>
+          <div className="fixed top-6 left-6 z-50">
+            <a href="/" className="flex items-center gap-0.5">
+              <img src="/images/logo.png" alt="Logo AgriTrust" className="h-8 w-auto" />
+              <span className="text-white text-lg font-bold hidden sm:inline">AgriTrust</span>
+            </a>
+          </div>
 
           {/* User Profile Badge */}
           <div className="fixed top-6 right-6 z-50">
@@ -93,7 +97,7 @@ export default function HomeLayout() {
                 </>
               ) : (
                 <Button 
-                  className="bg-white/20 hover:bg-white/30 text-white text-xs px-3 py-1 rounded-full"
+                  className=" hidden md:flex  bg-white/20 hover:bg-white/30 text-white text-xs px-3 py-1 rounded-full"
                   onClick={login}
                 >
                   <User className="h-4 w-4 mr-1" />
@@ -114,7 +118,7 @@ export default function HomeLayout() {
             {/* Mobile Menu Header */}
             <div className="border-b border-gray-700 p-4 flex items-center justify-between">
               <a href="/" className="flex items-center gap-2 font-bold text-xl">
-                <Leaf className="h-6 w-6 text-emerald-500" />
+                <img src="/images/logo.svg" alt="AgriTrust" className="h-6 w-auto" />
                 AgriTrust
               </a>
               <Button 
@@ -123,7 +127,6 @@ export default function HomeLayout() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-white hover:bg-gray-800"
               >
-                <X className="h-5 w-5" />
               </Button>
             </div>
 
@@ -249,20 +252,20 @@ export default function HomeLayout() {
                 <a
                   href="javascript:void(0)"
                   onClick={() => {
-                    navigate("/projects");
+                    navigate("/dashboard");
                     setIsMobileMenuOpen(false);
                   }}
                   className="flex items-center py-2 px-3 rounded-md hover:bg-gray-800 text-white">
-                  <span className="font-medium">Projects</span>
+                  <span className="font-medium">Dashboard</span>
                 </a>
                 <a
                   href="javascript:void(0)"
                   onClick={() => {
-                    navigate("/resources");
+                    navigate("/aiscan");
                     setIsMobileMenuOpen(false);
                   }}
                   className="flex items-center py-2 px-3 rounded-md hover:bg-gray-800 text-white">
-                  <span className="font-medium">Resources</span>
+                  <span className="font-medium">AIScan</span>
                 </a>
                 <a
                   href="javascript:void(0)"
@@ -272,6 +275,15 @@ export default function HomeLayout() {
                   }}
                   className="flex items-center py-2 px-3 rounded-md hover:bg-gray-800 text-white">
                   <span className="font-medium">NFTs</span>
+                </a>
+                <a
+                  href="javascript:void(0)"
+                  onClick={() => {
+                    navigate("/community");
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="flex items-center py-2 px-3 rounded-md hover:bg-gray-800 text-white">
+                  <span className="font-medium">Community</span>
                 </a>
                 <a
                   href="javascript:void(0)"
@@ -294,7 +306,7 @@ export default function HomeLayout() {
       <footer className={`${isAssistantPage ? "bg-black" : "bg-card"} border-t border-border/40 py-6`}>
         <div className="container">
           <div className="flex items-center justify-center gap-2">
-            <Leaf className="h-5 w-5 text-emerald-500" />
+            <img src="/images/logo.svg" alt="Logo-Agritrust" width={23} height={23} />
             <span className="text-muted-foreground">© {new Date().getFullYear()} AgriTrust</span>
           </div>
         </div>

@@ -113,12 +113,12 @@ export default function Home() {
           {/* Main Heading */}
           
 
-          <div className="relative flex items-center justify-center mb-16">
+          <div className="absolute md:top-1/2 md:left-1/2 transform md:-translate-x-1/2 md:-translate-y-1/2">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.8, duration: 1 }}
-              className="relative mt-28"
+              className="relative md:mt-[10%]  mt-[-65%]"
             >
               <img 
                 src="/images/tree.png" 
@@ -127,60 +127,59 @@ export default function Home() {
               />
 
               <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="absolute -top-12 "
-          
-          >
-            <h1 className="text-5xl md:text-7xl font-bold mb-4 text-white">
-              Empowering farmers through
-            </h1>
-            <div className="flex flex-wrap justify-center items-center gap-2 text-2xl md:text-3xl font-medium text-white">
-              <span className="border-b-2 border-white">truth</span>
-              <span>,</span>
-              <span className="border-b-2 border-white">technology</span>
-              <span>, and</span>
-              <span className="border-b-2 border-white">transparency</span>
-            </div>
-          </motion.div>
-              
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+                className="absolute top-[0] md:-top-8 px-2 w-full"
+              >
+                <h1 className="text-4xl md:text-7xl font-bold mb-4 text-white text-center">
+                  Empowering farmers through
+                </h1>
+                <div className="flex flex-wrap justify-center items-center gap-2 text-lg md:text-3xl font-medium text-white text-center">
+                  <span className="border-b-2 border-white">truth</span>
+                  <span>,</span>
+                  <span className="border-b-2 border-white">technology</span>
+                  <span>, and</span>
+                  <span className="border-b-2 border-white">transparency</span>
+                </div>
+              </motion.div>
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2, duration: 0.8 }}
-                className="absolute bottom-6 left-1/2 transform -translate-x-1/2"
+                className="absolute md:bottom-8 md:bottom-0 inset-x-0 mx-auto w-fit cursor-pointer z-20"
               >
-                <div className="bg-white/90 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/20">
-                  <div className="text-green-600 text-3xl font-bold">15,000</div>
-                  <div className="text-gray-600 text-xl">token earned</div>
+                <div className="bg-white/90 backdrop-blur-sm rounded-lg  px-6 py-3 border border-white/20">
+                  <div className="text-green-600 text-3xl font-bold">15,000+</div>
+                  <div className="text-gray-600 text-xl">farmer empowering</div>
                 </div>
               </motion.div>
             </motion.div>
             
             <motion.div
               animate={staggeredFloat(0)}
-              className="absolute top-110 left-200 md:left-10"
+              className="absolute md:top-[40%] top-[-70%] md:left-0"
             >
-              <Badge className="bg-white/90 text-gray-600 px-4 py-2 text-md font-medium shadow-lg">
+              <Badge className="bg-white/90 text-gray-600 px-4 py-2 text-sm md:text-lg font-medium shadow-lg">
                 AI-driven quality checks
               </Badge>
             </motion.div>
 
             <motion.div
               animate={staggeredFloat(1)}
-              className="absolute top-102 right-8 md:right-16"
+              className="absolute md:top-[50%] top-[-15%] right-4 md:right-0"
             >
-              <Badge className="bg-white/90 text-gray-800 px-4 py-2 text-md font-medium shadow-lg">
+              <Badge className="bg-white/90 text-gray-800 px-4 py-2 text-sm md:text-lg font-medium shadow-lg">
                 NFT-backed certification
               </Badge>
             </motion.div>
 
             <motion.div
               animate={staggeredFloat(2)}
-              className="absolute bottom-32 left-4 md:left-12"
+              className="absolute md:top-[60%]  top-[40%] left-4 md:left-12"
             >
-              <Badge className="bg-white/90 text-gray-800 px-4 py-2 text-md font-medium shadow-lg">
+              <Badge className="bg-white/90 text-gray-800 px-4 py-2 text-sm md:text-lg font-medium shadow-lg">
                 Transparent reputation
               </Badge>
             </motion.div>
@@ -190,20 +189,24 @@ export default function Home() {
           
         </motion.div>
 
-        {/* Scroll Indicator */}
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
+          className="absolute bottom-6 transform -translate-x-1/2 z-20 cursor-pointer"
+          onClick={() => {
+            document
+              .querySelector("#features-section")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
         >
-          <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
-            <ChevronDown className="h-6 w-6 text-white" />
+          <div className="w-10 h-10 rounded-full bg-white border border-white flex items-center justify-center">
+            <ChevronDown className="h-6 w-6 text-black" />
           </div>
         </motion.div>
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-900 to-gray-800">
+      <section id="features-section" className="py-20 bg-gradient-to-b from-gray-900 to-gray-800">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

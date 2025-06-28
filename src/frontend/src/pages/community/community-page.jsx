@@ -266,43 +266,41 @@ export default function CommunityPage() {
       {/* Header */}
       <div className="bg-gradient-to-r from-emerald-600 to-teal-600 p-8 pt-28">
         <div className="container mx-auto">
-          <div className="flex items-start justify-between">
+          <div className="flex flex-col gap-4">
             <div>
-              <h1 className="text-3xl font-bold mb-2">{communityData.profile.name}</h1>
-              <div className="flex items-center gap-4 text-emerald-100">
+              <h1 className="text-2xl sm:text-3xl font-bold mb-1">{communityData.profile.name}</h1>
+              <div className="flex flex-wrap gap-x-4 gap-y-1 text-emerald-100 text-sm">
                 <div className="flex items-center gap-1">
-                  <MapPin className="h-4 w-4" />
+                  <MapPin className="h-3.5 w-3.5" />
                   <span>{communityData.profile.location}</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <Users className="h-4 w-4" />
+                  <Users className="h-3.5 w-3.5" />
                   <span>{communityData.profile.members} members</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <Star className="h-4 w-4 fill-current" />
+                  <Star className="h-3.5 w-3.5 fill-current" />
                   <span>{communityData.profile.rating}</span>
                 </div>
               </div>
             </div>
-            <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
-              <div className="text-center">
-                <p className="text-emerald-100 text-sm">Total Balance</p>
-                <p className="text-2xl font-bold">{communityData.balance.totalBalance} LUM</p>
-              </div>
+
+            <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3 w-fit">
+              <p className="text-emerald-100 text-xs">Total Balance</p>
+              <p className="text-xl font-bold">{communityData.balance.totalBalance} LUM</p>
             </div>
           </div>
         </div>
       </div>
-
       {/* Navigation Tabs */}
       <div className="border-b border-gray-700">
-        <div className="container mx-auto px-8">
-          <div className="flex space-x-8">
+        <div className="container mx-auto px-4 sm:px-8">
+          <div className="flex overflow-x-auto no-scrollbar gap-6 sm:gap-8">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 py-4 px-2 border-b-2 font-medium transition-colors ${
+                className={`flex items-center gap-2 py-4 px-2 border-b-2 font-medium whitespace-nowrap transition-colors ${
                   activeTab === tab.id
                     ? 'border-emerald-400 text-emerald-400'
                     : 'border-transparent text-gray-400 hover:text-white'
@@ -315,6 +313,7 @@ export default function CommunityPage() {
           </div>
         </div>
       </div>
+
 
       {/* Content */}
       <div className="container mx-auto px-8 py-8">
